@@ -2,15 +2,15 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Shield, Cpu, Camera, DollarSign } from 'lucide-react';
+import { Shield, Cpu, Camera, DollarSign, HelpCircle } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { Button } from '@/components/ui/button';
 
 function AnimatedCounter({ target, suffix, inView }: { target: number; suffix: string; inView: boolean }) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (!inView) return;
-    let start = 0;
     const duration = 2000;
     const startTime = performance.now();
 
@@ -40,18 +40,22 @@ const stats = [
 ];
 
 const points = [
-  { icon: <Cpu className="w-6 h-6" />, title: 'Proprietary AI Engine', description: 'Our patent-pending analysis engine goes beyond simple hit/miss counting. It understands biomechanics, timing, and technique.' },
+  { icon: <Cpu className="w-6 h-6" />, title: 'Proprietary AI Engine', description: 'Our patent-pending analysis engine goes beyond simple hit/miss counting. It understands biomechanics, timing, and technique using real-time pose detection.' },
   { icon: <Camera className="w-6 h-6" />, title: 'Your Phone Is All You Need', description: 'Tripod or handheld, iPhone or Android. No $700 barrel cameras, no sensors, no wearables. Just point and shoot (your phone, that is).' },
-  { icon: <Shield className="w-6 h-6" />, title: 'Why, Not Just What', description: 'Other apps count hits and misses. We analyze WHY you missed — was it your mount? Your lead? Your follow-through? Now you know.' },
-  { icon: <DollarSign className="w-6 h-6" />, title: 'Pro Coaching, Fair Price', description: 'Getting this level of analysis from a professional coach costs $150-200 per session. Get it every round for less than a box of target loads.' },
+  { icon: <Shield className="w-6 h-6" />, title: 'Why, Not Just What', description: 'Other apps count hits and misses. We analyze WHY you missed. Was it your mount? Your lead? Your follow-through? Now you know.' },
+  { icon: <DollarSign className="w-6 h-6" />, title: 'Pro Coaching, Fair Price', description: 'Getting this level of analysis from a professional coach costs $150-200 per session. Get it every round for $4.99/mo, less than a box of target loads.' },
 ];
 
 export function WhySection() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
   const { ref: statsRef, inView: statsInView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
+  const scrollToHelp = () => {
+    document.querySelector('#waitlist')?.scrollIntoView?.({ behavior: 'smooth' });
+  };
+
   return (
-    <section className="py-16 sm:py-24">
+    <section className="py-16 sm:py-24 bg-[#0F172A]/80">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -67,7 +71,7 @@ export function WhySection() {
             The Most Advanced Clay Shooting <span className="text-gradient">AI Ever Created</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Other apps just count hits and misses. We analyze <strong className="text-foreground">why</strong> you missed — and tell you exactly how to fix it.
+            Other apps just count hits and misses. We analyze <strong className="text-foreground">why</strong> you missed and tell you exactly how to fix it.
           </p>
         </motion.div>
 
@@ -109,6 +113,24 @@ export function WhySection() {
             </motion.div>
           ))}
         </div>
+
+        {/* Help CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-center mt-12"
+        >
+          <Button
+            variant="outline"
+            onClick={scrollToHelp}
+            className="border-white/20 text-white hover:bg-white/10 hover:border-white/40 font-semibold gap-2"
+          >
+            <HelpCircle className="w-4 h-4" />
+            Questions? We Can Help
+          </Button>
+        </motion.div>
       </div>
     </section>
   );

@@ -149,4 +149,17 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+
+  .fixed-bg {
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  @supports (-webkit-touch-callout: none) {
+    .fixed-bg {
+      background-attachment: scroll;
+    }
+  }
 }

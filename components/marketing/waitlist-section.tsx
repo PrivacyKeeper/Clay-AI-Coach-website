@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, CheckCircle2, ArrowRight, Loader2 } from 'lucide-react';
+import { Mail, CheckCircle2, ArrowRight, Loader2, HelpCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
@@ -42,7 +42,7 @@ export function WaitlistSection() {
   };
 
   return (
-    <section id="waitlist" className="py-16 sm:py-24">
+    <section id="waitlist" className="py-16 sm:py-24 bg-[#0F172A]/80">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -110,6 +110,12 @@ export function WaitlistSection() {
               </p>
             </form>
           )}
+
+          {/* Help link */}
+          <div className="mt-8 flex items-center justify-center gap-2 text-sm text-muted-foreground">
+            <HelpCircle className="w-4 h-4" />
+            <span>Need help? Email us at <a href="mailto:support@clayaicoach.com" className="text-[hsl(var(--primary))] hover:underline">support@clayaicoach.com</a></span>
+          </div>
         </motion.div>
       </div>
     </section>

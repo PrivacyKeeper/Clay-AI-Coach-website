@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Crosshair } from 'lucide-react';
+import { Menu, X, Crosshair, HelpCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 const navLinks = [
   { label: 'Disciplines', href: '#disciplines' },
@@ -59,6 +60,19 @@ export function Header() {
                 {link.label}
               </button>
             ))}
+            <Link
+              href="/legal"
+              className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-white/5"
+            >
+              Legal
+            </Link>
+            <button
+              onClick={() => scrollTo('#waitlist')}
+              className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-white/5 flex items-center gap-1.5"
+            >
+              <HelpCircle className="w-3.5 h-3.5" />
+              Help
+            </button>
             <Button
               size="sm"
               onClick={() => scrollTo('#waitlist')}
@@ -96,6 +110,20 @@ export function Header() {
                   {link.label}
                 </button>
               ))}
+              <Link
+                href="/legal"
+                onClick={() => setMobileOpen(false)}
+                className="block w-full text-left px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground rounded-lg hover:bg-white/5 transition-colors"
+              >
+                Legal
+              </Link>
+              <button
+                onClick={() => scrollTo('#waitlist')}
+                className="block w-full text-left px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground rounded-lg hover:bg-white/5 transition-colors flex items-center gap-2"
+              >
+                <HelpCircle className="w-4 h-4" />
+                Help
+              </button>
               <Button
                 className="w-full mt-2 bg-[hsl(var(--primary))] hover:bg-[hsl(var(--primary))]/90 text-[hsl(var(--primary-foreground))] font-semibold"
                 onClick={() => scrollTo('#waitlist')}

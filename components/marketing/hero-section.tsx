@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion';
 import { ChevronDown, Smartphone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import Image from 'next/image';
 
 export function HeroSection() {
   const scrollTo = (href: string) => {
@@ -11,19 +10,12 @@ export function HeroSection() {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="https://cdn.abacus.ai/images/cb8cf29f-f971-46f2-96c9-48a560b6b315.png"
-          alt="Clay shooting range at sunset with orange skies and flying clays"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A]/70 via-[#0F172A]/50 to-[#0F172A]" />
-      </div>
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center"
+    >
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A]/75 via-[#0F172A]/60 to-[#0F172A] z-[1]" />
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 text-center pt-24 pb-16">
         <motion.div
@@ -42,8 +34,12 @@ export function HeroSection() {
             Every Shot. Every Discipline.
           </h1>
 
-          <p className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed">
-            From first-time shooter to championship squad — Clay AI Coach helps you break more clays with patent-pending AI analysis.
+          <p className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto mb-4 leading-relaxed">
+            From first-time shooter to championship squad, Clay AI Coach delivers patent-pending biomechanical analysis for less than a box of target loads.
+          </p>
+
+          <p className="text-base sm:text-lg text-[hsl(var(--primary))] font-semibold mb-10">
+            $4.99/mo vs. $700+ barrel cameras. Your phone is all you need.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -66,7 +62,7 @@ export function HeroSection() {
           </div>
         </motion.div>
 
-        {/* App Store Badges Placeholder */}
+        {/* App Store Badges */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -92,7 +88,7 @@ export function HeroSection() {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
       >

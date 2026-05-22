@@ -1,6 +1,7 @@
 'use client';
 
 import { Crosshair } from 'lucide-react';
+import Link from 'next/link';
 
 export function Footer() {
   const currentYear = 2026;
@@ -17,13 +18,14 @@ export function Footer() {
           </div>
 
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            <Link href="/legal" className="hover:text-foreground transition-colors">Legal</Link>
             <a href="mailto:support@clayaicoach.com" className="hover:text-foreground transition-colors">Contact</a>
           </div>
         </div>
 
         <div className="mt-8 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground/60">
-            © {currentYear} Apps 1 LLC. All rights reserved.
+            &copy; {currentYear} Apps 1 LLC. All rights reserved.
           </p>
           <p className="text-xs text-muted-foreground/40">
             Patent-pending AI technology.

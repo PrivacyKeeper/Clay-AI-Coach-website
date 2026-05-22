@@ -4,20 +4,34 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import {
   Crosshair, BookOpen, SlidersHorizontal, Package,
-  BarChart3, Users, TrendingUp, Smartphone, Trophy
+  BarChart3, Users, TrendingUp, Smartphone, Trophy,
+  MapPin, Navigation, Map, CloudSun, HelpCircle
 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const features = [
   {
     icon: <Crosshair className="w-6 h-6" />,
     title: 'Biomechanical AI Analysis',
-    description: 'Proprietary AI analyzes your stance, mount, swing, and follow-through frame by frame. Get coaching that was previously only available from $200/hour professionals.',
+    description: 'Proprietary AI analyzes your stance, mount, swing, and follow-through frame by frame. Get coaching previously only available from $200/hour professionals.',
     accent: 'primary' as const,
   },
   {
+    icon: <Users className="w-6 h-6" />,
+    title: 'Automatic Squad Scoring',
+    description: 'Score your entire squad from a single camera angle. Track hits and misses for up to 5 shooters simultaneously with our Red/Green fingerprinting system.',
+    accent: 'accent' as const,
+  },
+  {
     icon: <BookOpen className="w-6 h-6" />,
-    title: 'Complete Gun Library',
+    title: 'Shotgun Catalog (27+ Guns)',
     description: 'Log every shotgun in your collection with detailed specs. Track which gun performs best for each discipline and target presentation.',
+    accent: 'primary' as const,
+  },
+  {
+    icon: <Package className="w-6 h-6" />,
+    title: 'Shot Shell Logger',
+    description: 'Track shell brands, shot sizes, and velocities. Let the data reveal which loads break the most clays for your shooting style.',
     accent: 'accent' as const,
   },
   {
@@ -27,48 +41,58 @@ const features = [
     accent: 'primary' as const,
   },
   {
-    icon: <Package className="w-6 h-6" />,
-    title: 'Ammo Performance Logs',
-    description: 'Track shell brands, shot sizes, and velocities. Let the data tell you which loads break the most clays for your shooting style.',
+    icon: <MapPin className="w-6 h-6" />,
+    title: 'GPS Range Finder',
+    description: 'Locate nearby shooting ranges with built-in GPS. Search by discipline, distance, and amenities to find your next place to shoot.',
+    accent: 'accent' as const,
+  },
+  {
+    icon: <Map className="w-6 h-6" />,
+    title: 'Interactive Range Maps',
+    description: 'View detailed maps of shooting ranges in your area. Get directions, see satellite views, and explore course layouts before you arrive.',
+    accent: 'primary' as const,
+  },
+  {
+    icon: <CloudSun className="w-6 h-6" />,
+    title: 'Weather Integration',
+    description: 'Check real-time weather conditions at any range. Wind speed, temperature, and visibility all affect clay flight. Plan your sessions smarter.',
     accent: 'accent' as const,
   },
   {
     icon: <BarChart3 className="w-6 h-6" />,
-    title: 'Pattern Analysis',
+    title: 'Progress Analytics',
     description: 'Deep statistical analysis of your shooting patterns reveals trends you cannot see yourself. Identify problems before they become habits.',
-    accent: 'primary' as const,
-  },
-  {
-    icon: <Users className="w-6 h-6" />,
-    title: 'Squad Scoring',
-    description: 'Automatic scoring for your entire squad from a single camera angle. Track hits and misses for up to 5 shooters simultaneously.',
-    accent: 'accent' as const,
-  },
-  {
-    icon: <TrendingUp className="w-6 h-6" />,
-    title: 'Progress Tracking',
-    description: 'Watch your scores improve over time with detailed trend analysis. Set goals, track milestones, and celebrate breakthroughs.',
     accent: 'primary' as const,
   },
   {
     icon: <Smartphone className="w-6 h-6" />,
     title: 'No Extra Equipment',
-    description: 'Your phone is all you need. No $700 barrel cameras or special sensors — just prop up your phone and start shooting.',
+    description: 'Your phone is all you need. No $700 barrel cameras or special sensors. Just prop up your phone and start shooting.',
     accent: 'accent' as const,
+  },
+  {
+    icon: <TrendingUp className="w-6 h-6" />,
+    title: 'Real-Time Pose Detection',
+    description: 'Advanced computer vision tracks 33 body landmarks in real time. Analyze foot placement, hip rotation, gun mount, and swing path with precision.',
+    accent: 'primary' as const,
   },
   {
     icon: <Trophy className="w-6 h-6" />,
     title: 'For All Skill Levels',
-    description: 'Whether you just broke your first clay or you are chasing a perfect 100 straight — Clay AI Coach adapts to your experience level.',
-    accent: 'primary' as const,
+    description: 'Whether you just broke your first clay or you are chasing a perfect 100 straight, Clay AI Coach adapts to your experience level.',
+    accent: 'accent' as const,
   },
 ];
 
 export function FeaturesSection() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.05 });
 
+  const scrollToHelp = () => {
+    document.querySelector('#waitlist')?.scrollIntoView?.({ behavior: 'smooth' });
+  };
+
   return (
-    <section id="features" className="py-16 sm:py-24 bg-white/[0.02]">
+    <section id="features" className="py-16 sm:py-24 bg-[#0F172A]/85">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -109,6 +133,24 @@ export function FeaturesSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* Help CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-center mt-12"
+        >
+          <Button
+            variant="outline"
+            onClick={scrollToHelp}
+            className="border-white/20 text-white hover:bg-white/10 hover:border-white/40 font-semibold gap-2"
+          >
+            <HelpCircle className="w-4 h-4" />
+            Need Help? Get in Touch
+          </Button>
+        </motion.div>
       </div>
     </section>
   );

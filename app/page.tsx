@@ -9,7 +9,7 @@ import { Footer } from '@/components/marketing/footer';
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen fixed-bg" style={{ backgroundImage: 'url(/hero-bg.png)' }}>
       <Header />
       <HeroSection />
       <DisciplinesSection />
