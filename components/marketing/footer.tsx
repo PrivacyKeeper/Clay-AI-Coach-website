@@ -18,7 +18,9 @@ export function Footer() {
           </div>
 
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <Link href="/legal" className="hover:text-foreground transition-colors">Legal</Link>
+            <Link href="/terms.html" className="hover:text-foreground transition-colors">Terms of Service</Link>
+            <Link href="/refund-policy.html" className="hover:text-foreground transition-colors">Refund Policy</Link>
+            <Link href="/legal" className="hover:text-foreground transition-colors">Privacy Policy</Link>
             <a href="mailto:support@clayaicoach.com" className="hover:text-foreground transition-colors">Contact</a>
           </div>
         </div>

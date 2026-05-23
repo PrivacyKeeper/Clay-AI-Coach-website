@@ -197,9 +197,17 @@ export default function LegalPage() {
           <p className="text-xs text-muted-foreground/60">
             &copy; 2026 Apps 1 LLC. All rights reserved.
           </p>
-          <Link href="/" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
-            Back to Home
-          </Link>
+          <div className="flex items-center gap-5 text-xs text-muted-foreground">
+            <Link href="/terms.html" className="hover:text-foreground transition-colors">
+              Terms of Service
+            </Link>
+            <Link href="/refund-policy.html" className="hover:text-foreground transition-colors">
+              Refund Policy
+            </Link>
+            <Link href="/" className="hover:text-foreground transition-colors">
+              Back to Home
+            </Link>
+          </div>
         </div>
       </footer>
     </main>
